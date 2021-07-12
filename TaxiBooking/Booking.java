@@ -52,25 +52,24 @@ public class Booking
             if(distanceBetweenCustomerAndTaxi < min)
             {
                 bookedTaxi = t;
-                //distance between pickup and drop = (drop - pickup) * 15KM
-                distanceBetweenpickUpandDrop = Math.abs((dropPoint - '0') - (pickupPoint - '0')) * 15;
-                //trip earning = 100 + (distanceBetweenpickUpandDrop-5) * 10
-                earning = (distanceBetweenpickUpandDrop-5) * 10 + 100;
-                
-                //drop time calculation
-                int dropTime  = pickupTime + distanceBetweenpickUpandDrop/15;
-                
-                //when taxi will be free next
-                nextfreeTime = dropTime;
-
-                //taxi will be at drop point after trip
-                nextSpot = dropPoint;
-
-                // creating trip detail
-                tripDetail = customerID + "               " + customerID + "          " + pickupPoint +  "      " + dropPoint + "       " + pickupTime + "          " +dropTime + "           " + earning;
             }
-            
         }
+        //distance between pickup and drop = (drop - pickup) * 15KM
+        distanceBetweenpickUpandDrop = Math.abs((dropPoint - '0') - (pickupPoint - '0')) * 15;
+        //trip earning = 100 + (distanceBetweenpickUpandDrop-5) * 10
+        earning = (distanceBetweenpickUpandDrop-5) * 10 + 100;
+                
+        //drop time calculation
+        int dropTime  = pickupTime + distanceBetweenpickUpandDrop/15;
+                
+        //when taxi will be free next
+        nextfreeTime = dropTime;
+
+        //taxi will be at drop point after trip
+        nextSpot = dropPoint;
+
+         // creating trip detail
+         tripDetail = customerID + "               " + customerID + "          " + pickupPoint +  "      " + dropPoint + "       " + pickupTime + "          " +dropTime + "           " + earning;
 
         //setting corresponding details to allotted taxi
         bookedTaxi.setDetails(true,nextSpot,nextfreeTime,bookedTaxi.totalEarnings + earning,tripDetail);
